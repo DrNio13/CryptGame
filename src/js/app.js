@@ -2,20 +2,28 @@ var CryptoGame = CryptoGame || {};
 
 $(document).ready(function(){
 
+    CryptoGame.sumOfLetters = '';
+
     /**
      *
      * @param sumUp is a function that adds the selection of the characters of the user
+     * @param subtractChar is a function that removes the latest char from the current selection of the user
      */
-    CryptoGame.selectLetters = function(sumUp){
+    CryptoGame.selectLetters = function(sumUp, subtractChar){
 
         $('#crypt-table').delegate('td', 'click', function(){
 
             $(this).toggleClass('selected');
 
             var thisValue = $(this).text();
-            var thisElement = $(this);
 
-            sumUp(thisValue, thisElement);
+            if ( $(this).hasClass('selected') ) {
+                sumUp(thisValue);
+            }
+            else {
+                subtractChar();
+            }
+
         });
 
     };
@@ -23,32 +31,38 @@ $(document).ready(function(){
     /**
      *
      * @param self is the letter that user currently clicked
-     * @param obj is the object that triggered the event
      */
+    CryptoGame.sumUp = function(self){
 
-    var sumOfLetters = '';
+        CryptoGame.sumOfLetters += self;
+        //console.log(CryptoGame.sumOfLetters);
+        CryptoGame.evaluate(CryptoGame.sumOfLetters);
+    };
 
-    CryptoGame.sumUp = function(self, obj){
+    /**
+     * 
+     */
+    CryptoGame.subtractChar = function(){
 
-        if ( $(obj).hasClass('selected') ) {
-            sumOfLetters += self;
-            //console.log(sumOfLetters);
+        CryptoGame.sumOfLetters = CryptoGame.sumOfLetters.slice(0,-1);
+        //console.log(CryptoGame.sumOfLetters);
+        CryptoGame.evaluate(CryptoGame.sumOfLetters);
+    };
+
+    CryptoGame.evaluate = function(currentWord){
+        //console.log(currentWord);
+        var solution = 'oxi';
+
+        if (currentWord == solution) {
+            console.log('vrikes pithani lysi');
         }
         else {
-            //sumOfLetters.slice(0,-1);
+            console.log('sunexise na psaxneis');
         }
-
     };
-    //
-    //CryptoGame.solutionsStore = function(){
-    //    return 'NAI';
-    //};
 
 
+    CryptoGame.selectLetters(CryptoGame.sumUp, CryptoGame.subtractChar);
 
-    CryptoGame.selectLetters(CryptoGame.sumUp);
-    CryptoGame.sumUp();
-
-    //console.log('skata'.slice(0,-1));
 
 });
