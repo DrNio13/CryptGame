@@ -1,0 +1,22 @@
+body {
+  background: #1e1e1e;
+  color: white;
+}
+.table {
+  margin-top: 50px;
+  text-align: center;
+  background: #4E4E4E;
+}
+.table td {
+  border: 1px solid #737373;
+  font-size: 16px;
+}
+.table td:hover {
+  cursor: pointer;
+}
+.table > tbody > tr > td {
+  border-top: 1px solid #737373;
+}
+.selected {
+  background-color: #039655;
+}
