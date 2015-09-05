@@ -107,7 +107,11 @@ $(document).ready(function(){
 
     CryptoGame.success = function(){
 
-
+        // when user finds correct word
+        // counter++
+        // message the user
+        // erase the word for table and view
+        // change the color of the new selection of the chars
 
     };
 
