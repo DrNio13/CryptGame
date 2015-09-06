@@ -28,11 +28,12 @@ body {
   background-color: #4E4E4E;
   padding-top: 15px;
 }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .possible-answers {
-    height: 150px;
+    height: auto;
     width: 250px;
     margin-left: 15px;
+    padding-bottom: 20px;
   }
 }
 .possible-answers h4 {

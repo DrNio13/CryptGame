@@ -77,7 +77,7 @@ $(document).ready(function(){
     CryptoGame.evaluate = function(currentWord){
 
         // multiple solutions
-        var solutions = ['SOFT', 'KISS', 'PISI'];
+        var solutions = ['SOFT', 'KISS', 'PISI', 'PISAKI'];
 
         var reversedWord = currentWord.split('').reverse().join();
 
@@ -119,7 +119,7 @@ $(document).ready(function(){
 
         CryptoGame.eraseSolution(solution);
         // change the color of the new selection of the chars
-
+        // delete that solution from the table
         // reset the selection of chars - clear button
         // Clear button
         CryptoGame.checkAmountOfUserSolutions();
