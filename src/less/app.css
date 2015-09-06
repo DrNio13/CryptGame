@@ -8,14 +8,16 @@ body {
   background: #4E4E4E;
 }
 .table td {
-  border: 1px solid #737373;
+  border: 1px solid #9A9A9A;
   font-size: 16px;
 }
 .table td:hover {
   cursor: pointer;
 }
 .table > tbody > tr > td {
-  border-top: 1px solid #737373;
+  border: 1px solid #545454;
+  padding: 15px;
+  font-size: 20px;
 }
 .selected {
   background-color: #039655;
@@ -28,6 +30,7 @@ body {
   padding-bottom: 10px;
   background-color: #4E4E4E;
   padding-top: 15px;
+  min-height: 275px;
 }
 @media (max-width: 900px) {
   .possible-answers {
