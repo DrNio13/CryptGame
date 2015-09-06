@@ -1,11 +1,10 @@
 /**
  *
- * @TODO
+ * 1.Change the color of the new selection of the chars
+ * 2.Delete that solution from the table --- to ekana
+ * 3.Reset the selection of chars - clear button ----- Mallon to ekana
  *
- * * 1.Change the color of the new selection of the chars
- * 2.Delete that solution from the table
- * 3.Reset the selection of chars - clear button
- * 4.Clear button
+ *
  */
 
 
@@ -14,6 +13,8 @@ var CryptoGame = CryptoGame || {};
 $(document).ready(function(){
 
     CryptoGame.sumOfLetters = '';
+
+    CryptoGame.solutions = ['SOFT', 'KISS', 'PISI', 'PISAKI'];
 
     /**
      *
@@ -89,11 +90,7 @@ $(document).ready(function(){
      **/
     CryptoGame.evaluate = function(currentWord){
 
-        // multiple solutions
-        var solutions = ['SOFT', 'KISS', 'PISI', 'PISAKI'];
-
         var reversedWord = currentWord.split('').reverse().join();
-
 
 
         function searchInSolutions(currentSolution){
@@ -103,7 +100,7 @@ $(document).ready(function(){
             if ( currentWord == currentSolution ||  reversedWord == splitSolution  ) {
 
                 console.log('vrikes pithani lysi');
-                CryptoGame.success(currentSolution);
+                CryptoGame.success(currentSolution, CryptoGame.solutions);
             }
             else {
 
@@ -112,7 +109,7 @@ $(document).ready(function(){
 
         }
 
-        solutions.forEach(searchInSolutions);
+        CryptoGame.solutions.forEach(searchInSolutions);
 
 
     };
@@ -123,9 +120,10 @@ $(document).ready(function(){
     /**
      *
      * @param solution is the correct word that the user found
+     * @param solutions includes the CryptoGame.solutions
      * this function calls all the functions after the success of finding one word
      */
-    CryptoGame.success = function(solution){
+    CryptoGame.success = function(solution, solutions){
 
         CryptoGame.counter++;
 
@@ -133,21 +131,51 @@ $(document).ready(function(){
 
         CryptoGame.eraseSolution(solution);
 
-        CryptoGame.checkAmountOfUserSolutions();
+        CryptoGame.removeSolution(solution, solutions);
+
+        //CryptoGame.checkAmountOfUserSolutions();
+        CryptoGame.sumOfLetters = '';
 
     };
 
 
+
+    /**
+     * Display the sum of correct words that the user has found
+     */
     CryptoGame.showNumberOfSolutions = function(){
         $('#number-of-answers').html(CryptoGame.counter);
     };
 
 
 
-    // how many solutions you have found
-    CryptoGame.checkAmountOfUserSolutions = function(){
+    /**
+     *
+     *
+     * @param solution is pointing to the current solution of the user
+     * @param solutions is the table of the solutions
+     *
+     * when the user is finding one word (solution) this word is removed
+     */
+    CryptoGame.removeSolution = function(solution, solutions){
+
+        solutions.forEach(function(currentSolution, index){
+
+            if (solution === currentSolution){
+                solutions.splice(index,1);
+            }
+
+        });
 
     };
+
+
+
+    // how many solutions you have found
+    //CryptoGame.checkAmountOfUserSolutions = function(){
+    //
+    //};
+
 
 
     /**
@@ -168,8 +196,6 @@ $(document).ready(function(){
     };
 
 
-    // Start the game :)
-    CryptoGame.selectLetters(CryptoGame.sumUp, CryptoGame.subtractChar);
 
 
     /**
@@ -190,6 +216,11 @@ $(document).ready(function(){
         });
 
     };
+
+
+
+    // Start the game :)
+    CryptoGame.selectLetters(CryptoGame.sumUp, CryptoGame.subtractChar);
 
     CryptoGame.clearAll();
 
