@@ -1,6 +1,8 @@
 body {
   background: #1e1e1e;
   color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 .table {
   margin-top: 50px;
@@ -17,7 +19,7 @@ body {
 .table > tbody > tr > td {
   border: 1px solid #545454;
   padding: 15px;
-  font-size: 20px;
+  font-size: 21px;
 }
 .selected {
   background-color: #039655;
@@ -48,4 +50,7 @@ ul {
 }
 .erase-solution {
   text-decoration: line-through;
+}
+.solutions {
+  font-weight: bold;
 }

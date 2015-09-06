@@ -144,6 +144,11 @@ $(document).ready(function(){
      */
     CryptoGame.showNumberOfSolutions = function(){
         $('#number-of-answers').html(CryptoGame.counter);
+
+        var defaultAnswers = 0;
+        if (CryptoGame.counter > defaultAnswers) {
+            $('#number-of-answers').addClass('has-found');
+        }
     };
 
 
@@ -212,6 +217,7 @@ $(document).ready(function(){
             $('#clearAll').toggleClass('clear');
             $('td').removeClass('selected');
             $('li').removeClass('erase-solution');
+            $('#number-of-answers').removeClass('has-found');
             CryptoGame.counter = 0;
             CryptoGame.showNumberOfSolutions();
             CryptoGame.solutions = ['SOFT', 'KISS', 'PISI', 'PISAKI'];
