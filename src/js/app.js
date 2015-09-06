@@ -36,8 +36,6 @@ $(document).ready(function(){
 
         });
 
-
-
     };
 
 
@@ -56,6 +54,7 @@ $(document).ready(function(){
 
 
 
+
     /**
      * 
      */
@@ -69,6 +68,7 @@ $(document).ready(function(){
 
 
 
+
     /**
      *
      * @param currentWord is the sum of chars that the user clicked
@@ -77,20 +77,20 @@ $(document).ready(function(){
     CryptoGame.evaluate = function(currentWord){
 
         // multiple solutions
-        var solutions = ['AGAPI', 'BABE', 'PISI'];
+        var solutions = ['SOFT', 'KISS', 'PISI'];
 
         var reversedWord = currentWord.split('').reverse().join();
 
 
 
-        function searchInSolutions(currentSolution, index, solution){
+        function searchInSolutions(currentSolution){
 
             var splitSolution = currentSolution.split('');
 
             if ( currentWord == currentSolution ||  reversedWord == splitSolution  ) {
 
                 console.log('vrikes pithani lysi');
-                CryptoGame.success();
+                CryptoGame.success(currentSolution, solutions);
             }
             else {
 
@@ -105,16 +105,54 @@ $(document).ready(function(){
     };
 
 
-    CryptoGame.success = function(){
 
-        // when user finds correct word
-        // counter++
-        // message the user
-        // erase the word for table and view
+
+    /**
+     *
+     * @param solution is the correct word that the user found
+     * this function calls all the functions after the success of finding one word
+     */
+    CryptoGame.success = function(solution){
+
+        CryptoGame.counter++;
+        $('#number-of-answers').html(CryptoGame.counter);
+
+        CryptoGame.eraseSolution(solution);
         // change the color of the new selection of the chars
+
+        // reset the selection of chars - clear button
+        // Clear button
+        CryptoGame.checkAmountOfUserSolutions();
+    };
+
+
+
+
+    // how many solutions you have found
+    CryptoGame.checkAmountOfUserSolutions = function(){
 
     };
 
+
+    /**
+     *
+     * @param solution is the correct word that the user found
+     * this function simply erase the word from the list that the user has found
+     */
+    CryptoGame.eraseSolution = function(solution){
+
+        var tableSolution = $('#answers').find('li').text().split(' ');
+
+        tableSolution.forEach(function(currentElem){
+           if (currentElem == solution) {
+               $("#answers").find("li:contains('" + currentElem + "')").toggleClass('erase-solution');
+           }
+        });
+
+    };
+
+
+    // Start the game :)
     CryptoGame.selectLetters(CryptoGame.sumUp, CryptoGame.subtractChar);
 
 
