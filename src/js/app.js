@@ -1,3 +1,14 @@
+/**
+ *
+ * @TODO
+ *
+ * * 1.Change the color of the new selection of the chars
+ * 2.Delete that solution from the table
+ * 3.Reset the selection of chars - clear button
+ * 4.Clear button
+ */
+
+
 var CryptoGame = CryptoGame || {};
 
 $(document).ready(function(){
@@ -28,7 +39,9 @@ $(document).ready(function(){
             var thisValue = $(this).text();
 
             if ( $(this).hasClass('selected') ) {
+
                 sumUp(thisValue);
+
             }
             else {
                 subtractChar();
@@ -90,7 +103,7 @@ $(document).ready(function(){
             if ( currentWord == currentSolution ||  reversedWord == splitSolution  ) {
 
                 console.log('vrikes pithani lysi');
-                CryptoGame.success(currentSolution, solutions);
+                CryptoGame.success(currentSolution);
             }
             else {
 
@@ -115,16 +128,19 @@ $(document).ready(function(){
     CryptoGame.success = function(solution){
 
         CryptoGame.counter++;
-        $('#number-of-answers').html(CryptoGame.counter);
+
+        CryptoGame.showNumberOfSolutions();
 
         CryptoGame.eraseSolution(solution);
-        // change the color of the new selection of the chars
-        // delete that solution from the table
-        // reset the selection of chars - clear button
-        // Clear button
+
         CryptoGame.checkAmountOfUserSolutions();
+
     };
 
+
+    CryptoGame.showNumberOfSolutions = function(){
+        $('#number-of-answers').html(CryptoGame.counter);
+    };
 
 
 
@@ -154,6 +170,28 @@ $(document).ready(function(){
 
     // Start the game :)
     CryptoGame.selectLetters(CryptoGame.sumUp, CryptoGame.subtractChar);
+
+
+    /**
+     *
+     * Reset button clicked and the function removes all data
+     */
+    CryptoGame.clearAll = function() {
+
+        $('#clearAll').on('click', function(){
+
+            $('#clearAll').toggleClass('clear');
+            $('td').removeClass('selected');
+            $('li').removeClass('erase-solution');
+            CryptoGame.counter = 0;
+            CryptoGame.showNumberOfSolutions();
+            CryptoGame.sumOfLetters = '';
+
+        });
+
+    };
+
+    CryptoGame.clearAll();
 
 
 });
