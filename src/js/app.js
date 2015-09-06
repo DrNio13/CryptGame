@@ -1,10 +1,10 @@
 /**
  *
- * 1.Change the color of the new selection of the chars
- * 2.Delete that solution from the table --- to ekana
- * 3.Reset the selection of chars - clear button ----- Mallon to ekana
+ * 1) a.Store the solution that the user found
+ *    b.Lock the word on the table
+ *    c.Change the color of the new selection of the chars
  *
- *
+ * 2) When the number of solutions that the user finds is equals with the solution.length -> then display nice modal window with opacity in the center of the screen
  */
 
 
@@ -92,7 +92,6 @@ $(document).ready(function(){
 
         var reversedWord = currentWord.split('').reverse().join();
 
-
         function searchInSolutions(currentSolution){
 
             var splitSolution = currentSolution.split('');
@@ -158,7 +157,7 @@ $(document).ready(function(){
      * when the user is finding one word (solution) this word is removed
      */
     CryptoGame.removeSolution = function(solution, solutions){
-
+        console.log(solutions);
         solutions.forEach(function(currentSolution, index){
 
             if (solution === currentSolution){
@@ -166,6 +165,7 @@ $(document).ready(function(){
             }
 
         });
+        console.log(solutions);
 
     };
 
@@ -197,6 +197,9 @@ $(document).ready(function(){
 
 
 
+    // Start the game :)
+    CryptoGame.selectLetters(CryptoGame.sumUp, CryptoGame.subtractChar);
+
 
     /**
      *
@@ -211,16 +214,12 @@ $(document).ready(function(){
             $('li').removeClass('erase-solution');
             CryptoGame.counter = 0;
             CryptoGame.showNumberOfSolutions();
+            CryptoGame.solutions = ['SOFT', 'KISS', 'PISI', 'PISAKI'];
             CryptoGame.sumOfLetters = '';
 
         });
 
     };
-
-
-
-    // Start the game :)
-    CryptoGame.selectLetters(CryptoGame.sumUp, CryptoGame.subtractChar);
 
     CryptoGame.clearAll();
 
