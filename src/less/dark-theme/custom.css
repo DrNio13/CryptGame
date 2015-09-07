@@ -84,3 +84,11 @@ li {
 .has-found {
   color: rgba(54, 255, 192, 0.9);
 }
+@media all and (max-width: 550px) {
+  .table > tbody > tr > td {
+    padding: 10px;
+  }
+  .table {
+    margin-top: 20px;
+  }
+}

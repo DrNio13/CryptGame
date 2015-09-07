@@ -14,7 +14,7 @@ $(document).ready(function(){
 
     CryptoGame.sumOfLetters = '';
 
-    CryptoGame.solutions = ['SOFT', 'KISS', 'PISI', 'PISAKI'];
+    CryptoGame.solutions = ['SOFT', 'CAT', 'PISI', 'SHARK'];
 
     /**
      *
