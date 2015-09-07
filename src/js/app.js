@@ -4,7 +4,7 @@
  *    b.Lock the word on the table
  *    c.Change the color of the new selection of the chars
  *
- * 2) When the number of solutions that the user finds is equals with the solution.length -> then display nice modal window with opacity in the center of the screen
+ * 2) Display nice modal window with opacity in the center of the screen
  */
 
 
@@ -13,7 +13,6 @@ var CryptoGame = CryptoGame || {};
 $(document).ready(function(){
 
     CryptoGame.sumOfLetters = '';
-
     CryptoGame.solutions = ['SOFT', 'CAT', 'PISI', 'SHARK'];
 
     /**
@@ -132,7 +131,7 @@ $(document).ready(function(){
 
         CryptoGame.removeSolution(solution, solutions);
 
-        //CryptoGame.checkAmountOfUserSolutions();
+        CryptoGame.checkAmountOfUserSolutions();
         CryptoGame.sumOfLetters = '';
 
     };
@@ -162,7 +161,7 @@ $(document).ready(function(){
      * when the user is finding one word (solution) this word is removed
      */
     CryptoGame.removeSolution = function(solution, solutions){
-        console.log(solutions);
+        //console.log(solutions);
         solutions.forEach(function(currentSolution, index){
 
             if (solution === currentSolution){
@@ -170,16 +169,26 @@ $(document).ready(function(){
             }
 
         });
-        console.log(solutions);
+        //console.log(solutions);
 
     };
 
 
 
     // how many solutions you have found
-    //CryptoGame.checkAmountOfUserSolutions = function(){
-    //
-    //};
+    CryptoGame.checkAmountOfUserSolutions = function(){
+
+        if ( CryptoGame.solutions.length == 0 ) {
+
+            $('#modal-success').slideDown();
+        }
+    };
+
+    $('#close-success-modal').on('click', function(){
+
+        CryptoGame.clearAll();
+        $('#modal-success').slideUp();
+    });
 
 
 
@@ -212,22 +221,25 @@ $(document).ready(function(){
      */
     CryptoGame.clearAll = function() {
 
-        $('#clearAll').on('click', function(){
+        CryptoGame.counter = 0;
+        CryptoGame.showNumberOfSolutions();
+        CryptoGame.solutions = ['SOFT', 'CAT', 'PISI', 'SHARK'];
+        CryptoGame.sumOfLetters = '';
+        $('td').removeClass('selected');
+        $('li').removeClass('erase-solution');
+        $('#number-of-answers').removeClass('has-found');
 
-            $('#clearAll').toggleClass('clear');
-            $('td').removeClass('selected');
-            $('li').removeClass('erase-solution');
-            $('#number-of-answers').removeClass('has-found');
-            CryptoGame.counter = 0;
-            CryptoGame.showNumberOfSolutions();
-            CryptoGame.solutions = ['SOFT', 'KISS', 'PISI', 'PISAKI'];
-            CryptoGame.sumOfLetters = '';
-
-        });
+        console.log(CryptoGame.solutions);
+        console.log(CryptoGame.sumOfLetters);
 
     };
 
-    CryptoGame.clearAll();
+    $('#clearAll').on('click', function(){
+
+        $('#clearAll').toggleClass('clear');
+        CryptoGame.clearAll();
+
+    });
 
 
 });

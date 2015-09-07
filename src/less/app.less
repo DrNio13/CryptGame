@@ -65,3 +65,54 @@ ul {
 .solutions {
   font-weight: bold;
 }
+
+.modal-content {
+  background: #464646;
+  position: fixed;
+  left: 38%;
+  z-index: 2;
+  padding: 2% 3% 2% 3%;
+
+  @media (max-width: 1230px) {
+    left: 33%;
+  }
+
+  @media (max-width: 900px) {
+    left: 28%;
+  }
+
+  @media (max-width: 730px){
+    left: 23%;
+  }
+
+  @media (max-width: 580px) {
+    left: 18%;
+  }
+
+  @media (max-width: 500px) {
+    left: 14%;
+  }
+
+  @media (max-width: 430px) {
+    left: 0;
+  }
+
+  h2{
+    margin-top: 0;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px #3C3C3C;
+  }
+
+  .glyphicon-remove {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background: black;
+    border: 0;
+    outline: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: #CCCCCC;
+  }
+}
