@@ -22,6 +22,9 @@ $(document).ready(function(){
      */
     CryptoGame.counter = 0;
 
+    var $cells = $('td');
+    var numberOfAnswers = $('#number-of-answers');
+    
 
 
     /**
@@ -34,6 +37,7 @@ $(document).ready(function(){
         $('#crypt-table').delegate('td', 'click', function(){
 
             $(this).toggleClass('selected');
+            $(this).toggleClass('active');
 
             // get the value of the current selection
             var thisValue = $(this).text();
@@ -97,13 +101,12 @@ $(document).ready(function(){
 
             if ( currentWord == currentSolution ||  reversedWord == splitSolution  ) {
 
-                console.log('vrikes pithani lysi');
+                //console.log('vrikes pithani lysi');
                 CryptoGame.success(currentSolution, CryptoGame.solutions);
             }
-            else {
-
-                console.log('sunexise na psaxneis');
-            }
+            //else {
+            //    //console.log('sunexise na psaxneis');
+            //}
 
         }
 
@@ -113,6 +116,33 @@ $(document).ready(function(){
     };
 
 
+    /**
+     *
+     *
+     * @param counter is the number of solutions that the user has found
+     */
+    CryptoGame.lockSolutions = function(counter){
+
+        var $active = $('.active');
+
+        $('.selected').addClass('lock-' + counter);
+
+        $active.removeClass('selected');
+        $active.removeClass('active');
+
+    };
+
+    /**
+     *
+     * Remove the locked words
+     */
+    CryptoGame.removeLocks = function(){
+
+        for( var i=1; i <= CryptoGame.solutions.length; i++){
+            $cells.removeClass('lock-' + i );
+        }
+
+    };
 
 
     /**
@@ -124,6 +154,8 @@ $(document).ready(function(){
     CryptoGame.success = function(solution, solutions){
 
         CryptoGame.counter++;
+
+        CryptoGame.lockSolutions(CryptoGame.counter);
 
         CryptoGame.showNumberOfSolutions();
 
@@ -142,11 +174,11 @@ $(document).ready(function(){
      * Display the sum of correct words that the user has found
      */
     CryptoGame.showNumberOfSolutions = function(){
-        $('#number-of-answers').html(CryptoGame.counter);
+        numberOfAnswers.html(CryptoGame.counter);
 
         var defaultAnswers = 0;
         if (CryptoGame.counter > defaultAnswers) {
-            $('#number-of-answers').addClass('has-found');
+            numberOfAnswers.addClass('has-found');
         }
     };
 
@@ -225,12 +257,13 @@ $(document).ready(function(){
         CryptoGame.showNumberOfSolutions();
         CryptoGame.solutions = ['SOFT', 'CAT', 'PISI', 'SHARK'];
         CryptoGame.sumOfLetters = '';
-        $('td').removeClass('selected');
-        $('li').removeClass('erase-solution');
-        $('#number-of-answers').removeClass('has-found');
+        $cells.removeClass('selected');
 
-        console.log(CryptoGame.solutions);
-        console.log(CryptoGame.sumOfLetters);
+        CryptoGame.removeLocks();
+
+        $cells.removeClass('lock-' + CryptoGame.counter);
+        $('li').removeClass('erase-solution');
+        numberOfAnswers.removeClass('has-found');
 
     };
 

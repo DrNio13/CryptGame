@@ -40,8 +40,10 @@ td:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0e0e0e', endColorstr='#7d7e7d', GradientType=0);
   /* IE6-8 */
 }
-.selected {
+.table > tbody > tr > td.active {
   background: rgba(48, 210, 159, 0.9);
+}
+.selected {
   font-weight: 700;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -94,4 +96,36 @@ li {
 }
 .modal-window {
   display: none;
+}
+.lock-1 {
+  background: #3E96CA;
+  font-weight: bold;
+}
+.lock-1:hover {
+  cursor: default;
+  background: #3E96CA;
+}
+.lock-2 {
+  background: #5E56CA;
+  font-weight: bold;
+}
+.lock-2:hover {
+  cursor: default;
+  background: #3E96CA;
+}
+.lock-3 {
+  background: #9C1C92;
+  font-weight: bold;
+}
+.lock-3:hover {
+  cursor: default;
+  background: #3E96CA;
+}
+.lock-4 {
+  background: #2E8C7F;
+  font-weight: bold;
+}
+.lock-4:hover {
+  cursor: default;
+  background: #3E96CA;
 }

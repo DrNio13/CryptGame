@@ -13,16 +13,13 @@ body {
   border: 1px solid #9A9A9A;
   font-size: 16px;
 }
-.table td:hover {
-  cursor: pointer;
-}
 .table > tbody > tr > td {
   border: 1px solid #545454;
   padding: 15px;
   font-size: 21px;
 }
-.selected {
-  background-color: #039655;
+td:hover {
+  cursor: pointer;
 }
 .possible-answers {
   list-style: none;

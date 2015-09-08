@@ -30,8 +30,12 @@ td:hover {
 
 }
 
-.selected {
+.table > tbody > tr > td.active {
   background: rgba(48, 210, 159, 0.9);
+}
+
+.selected {
+  //background: rgba(48, 210, 159, 0.9);
   font-weight: 700;
 
   -webkit-transition: all 0.2s ease-out;
@@ -102,6 +106,42 @@ li {
   display:none;
 }
 
-.shadow {
+.lock-1 {
+  background: #3E96CA;
+  font-weight: bold;
 
+  &:hover{
+    cursor: default;
+    background: #3E96CA;
+  }
+}
+
+.lock-2 {
+  background: #5E56CA;
+  font-weight: bold;
+
+  &:hover{
+    cursor: default;
+    background: #3E96CA;
+  }
+}
+
+.lock-3 {
+  background: #9C1C92;
+  font-weight: bold;
+
+  &:hover{
+    cursor: default;
+    background: #3E96CA;
+  }
+}
+
+.lock-4 {
+  background: #2E8C7F;
+  font-weight: bold;
+
+  &:hover{
+    cursor: default;
+    background: #3E96CA;
+  }
 }
