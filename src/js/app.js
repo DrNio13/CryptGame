@@ -210,16 +210,22 @@ $(document).ready(function(){
     // how many solutions you have found
     CryptoGame.checkAmountOfUserSolutions = function(){
 
-        if ( CryptoGame.solutions.length == 0 ) {
+        if ( CryptoGame.solutions.length === 0 ) {
 
-            $('#modal-success').slideDown();
+            // Show Success message
+            $('#modal-success').children('.modal-content').animate({
+                top: '0',
+                opacity: '1'
+            },'normal');
+
+            $('#shadow').addClass('shadow');
         }
     };
 
     $('#close-success-modal').on('click', function(){
 
         CryptoGame.clearAll();
-        $('#modal-success').slideUp();
+
     });
 
 
@@ -253,6 +259,12 @@ $(document).ready(function(){
      */
     CryptoGame.clearAll = function() {
 
+        $('#modal-success').children('.modal-content').animate({
+            top: '-500px',
+            opacity: '0.3'
+        },'slow');
+
+
         CryptoGame.counter = 0;
         CryptoGame.showNumberOfSolutions();
         CryptoGame.solutions = ['SOFT', 'CAT', 'PISI', 'SHARK'];
@@ -265,8 +277,11 @@ $(document).ready(function(){
         $('li').removeClass('erase-solution');
         numberOfAnswers.removeClass('has-found');
 
+        $('#shadow').removeClass('shadow');
+
     };
 
+    // User clicks the "Reset" button
     $('#clearAll').on('click', function(){
 
         $('#clearAll').toggleClass('clear');
