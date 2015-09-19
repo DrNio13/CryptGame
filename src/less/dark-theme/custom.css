@@ -100,6 +100,11 @@ li {
 .lock-1 {
   background: #3E96CA;
   font-weight: bold;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 .lock-1:hover {
   cursor: default;
@@ -108,6 +113,11 @@ li {
 .lock-2 {
   background: #5E56CA;
   font-weight: bold;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 .lock-2:hover {
   cursor: default;
@@ -116,6 +126,11 @@ li {
 .lock-3 {
   background: #9C1C92;
   font-weight: bold;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 .lock-3:hover {
   cursor: default;
@@ -124,6 +139,11 @@ li {
 .lock-4 {
   background: #2E8C7F;
   font-weight: bold;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 .lock-4:hover {
   cursor: default;

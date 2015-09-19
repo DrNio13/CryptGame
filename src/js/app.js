@@ -15,6 +15,9 @@ $(document).ready(function(){
     CryptoGame.sumOfLetters = '';
     CryptoGame.solutions = ['SOFT', 'CAT', 'PISI', 'SHARK'];
 
+
+
+
     /**
      *
      * @type {number}
@@ -24,7 +27,27 @@ $(document).ready(function(){
 
     var $cells = $('td');
     var numberOfAnswers = $('#number-of-answers');
-    
+
+
+
+
+    /**
+     *
+     * Assign ids dynamically to all elements
+     *
+     * */
+    CryptoGame.assignIds = function(){
+
+        var elements = document.getElementsByTagName('td');
+        var j = 0;
+        for (var i=0; i<elements.length; i++){
+            console.log(elements[i].id = i + " "+ j);
+        }
+    };
+
+    CryptoGame.assignIds();
+
+
 
 
     /**
@@ -57,6 +80,7 @@ $(document).ready(function(){
 
 
 
+
     /**
      *
      * @param self is the letter that user currently clicked
@@ -65,10 +89,18 @@ $(document).ready(function(){
 
         CryptoGame.sumOfLetters += self;
 
+        CryptoGame.evaluateRow(self);
+
         // evaluate the current word
         CryptoGame.evaluate(CryptoGame.sumOfLetters);
     };
 
+
+    CryptoGame.evaluateRow = function(currentChar){
+
+        $(currentChar).parent()
+
+    };
 
 
 
